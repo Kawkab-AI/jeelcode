@@ -143,10 +143,7 @@ img {
 .section__title {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-pink) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #15DEFF;
 }
 
 .section__description {
@@ -579,7 +576,7 @@ img {
 .values__card:nth-child(5) {
     grid-column: 1 / -1;
     grid-row: 3;
-    width: calc(50% - var(--spacing-lg) / 2);
+    width: 65%;
     justify-self: center;
 }
 
@@ -842,6 +839,12 @@ img {
     color: var(--color-white);
 }
 
+.track__icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
 .track__title {
     font-size: 1.25rem;
     margin-bottom: var(--spacing-sm);
@@ -870,6 +873,152 @@ img {
 
 .track__btn:hover svg {
     transform: translateX(-5px);
+}
+
+/* ===================================
+   CURRICULUM COMPATIBILITY SECTION
+   =================================== */
+.curriculum-compatibility {
+    background: linear-gradient(135deg, #0a1128 0%, #1a2847 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.curriculum-compatibility__container {
+    position: relative;
+    z-index: 1;
+}
+
+.curriculum-compatibility__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+    align-items: center;
+    justify-items: center;
+    margin-top: var(--spacing-2xl);
+}
+
+.curriculum-compatibility__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.curriculum-compatibility__logo:hover {
+    transform: translateY(-5px);
+}
+
+.curriculum-compatibility__logo img {
+    max-width: 180px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: all var(--transition-base);
+}
+
+.curriculum-compatibility__logo:hover img {
+    opacity: 1;
+}
+
+/* ===================================
+   TRAINING IMPLEMENTATION SECTION
+   =================================== */
+.training-implementation {
+    background: linear-gradient(135deg, #1a2847 0%, #0a1128 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.training-implementation__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+    margin-top: var(--spacing-2xl);
+}
+
+.training-implementation__image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.training-implementation__img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.training-implementation__cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.training-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    border-radius: 50px;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.training-card--cyan {
+    background: linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);
+}
+
+.training-card--pink {
+    background: linear-gradient(135deg, #ff1654 0%, #d91147 100%);
+}
+
+.training-card:hover {
+    transform: translateX(-10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.training-card__icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.training-card__icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--color-white);
+}
+
+.training-card__content {
+    flex: 1;
+}
+
+.training-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.training-card__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
 }
 
 /* ===================================
@@ -1042,6 +1191,29 @@ img {
 .stat__text {
     font-size: 1.125rem;
     color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================
+   BOOKING SECTION
+   =================================== */
+.booking__content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.booking__calendly {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.booking__calendly iframe {
+    border-radius: var(--radius-xl);
+    min-height: 700px;
 }
 
 /* ===================================
@@ -1544,6 +1716,56 @@ img {
     .tracks__grid {
         grid-template-columns: 1fr;
     }
+    
+    .curriculum-compatibility__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .curriculum-compatibility__logo img {
+        max-width: 120px;
+        max-height: 70px;
+    }
+    
+    .training-implementation__content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .training-implementation__image {
+        order: 2;
+    }
+    
+    .training-implementation__cards {
+        order: 1;
+    }
+    
+    .training-card {
+        padding: var(--spacing-lg);
+        border-radius: 30px;
+    }
+    
+    .training-card__icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .training-card__icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .training-card__title {
+        font-size: 1.25rem;
+    }
+    
+    .training-card__description {
+        font-size: 1rem;
+    }
+    
+    .booking__calendly iframe {
+        min-height: 600px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1577,6 +1799,10 @@ img {
     .scroll-top,
     .hero__bg {
         display: none;
+    }
+    
+    .booking__calendly iframe {
+        min-height: 500px;
     }
     
     body {
