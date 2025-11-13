@@ -140,16 +140,27 @@
     
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
-            const scrollDuration = 1000; // 2 seconds
-            const scrollStep = -window.scrollY / (scrollDuration / 15);
+            const start = window.pageYOffset;
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
             
-            const scrollInterval = setInterval(() => {
-                if (window.scrollY !== 0) {
-                    window.scrollBy(0, scrollStep);
-                } else {
-                    clearInterval(scrollInterval);
+            function easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+            }
+            
+            function animateScroll(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easing = easeInOutCubic(progress);
+                
+                window.scrollTo(0, start * (1 - easing));
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateScroll);
                 }
-            }, 15);
+            }
+            
+            requestAnimationFrame(animateScroll);
         });
     }
 
