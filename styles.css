@@ -925,6 +925,34 @@ img {
 }
 
 /* ===================================
+   EVENT IMAGE SECTION
+   =================================== */
+.event-image {
+    padding: var(--spacing-xl) 0;
+    margin: 0;
+}
+
+.event-image__container {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 var(--spacing-xl);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-image__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 1200px;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-2xl);
+}
+
+/* ===================================
    TRAINING IMPLEMENTATION SECTION
    =================================== */
 .training-implementation {
@@ -978,7 +1006,7 @@ img {
 }
 
 .training-card--pink {
-    background: linear-gradient(135deg, #ff1654 0%, #d91147 100%);
+    background: linear-gradient(135deg, #ED893D 0%, #d91147 100%);
 }
 
 .training-card:hover {
@@ -1194,6 +1222,50 @@ img {
 }
 
 /* ===================================
+   COUNTRIES COVERAGE SECTION
+   =================================== */
+.countries-coverage {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 22, 84, 0.05) 100%);
+}
+
+.countries-coverage__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.countries-coverage__map {
+    width: 100%;
+    overflow: hidden;
+}
+
+.countries-coverage__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.countries-coverage__text {
+    padding: var(--spacing-xl);
+}
+
+.countries-coverage__title {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-white);
+}
+
+.countries-coverage__highlight {
+    color: var(--color-cyan);
+    font-weight: 800;
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+/* ===================================
    BOOKING SECTION
    =================================== */
 .booking__content {
@@ -1214,6 +1286,74 @@ img {
 .booking__calendly iframe {
     border-radius: var(--radius-xl);
     min-height: 700px;
+}
+
+/* ===================================
+   Strategic Partners Section
+   =================================== */
+.strategic-partners__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-2xl);
+    align-items: center;
+    justify-items: center;
+    margin-top: var(--spacing-3xl);
+}
+
+.strategic-partners__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.strategic-partners__logo img {
+    width: 180px;
+    height: 100px;
+    object-fit: contain;
+    transition: var(--transition);
+    filter: grayscale(100%) brightness(0) invert(1);
+}
+
+.strategic-partners__logo:hover img {
+    filter: grayscale(0%) brightness(1) invert(0);
+    transform: scale(1.1);
+}
+
+/* ===================================
+   Success Partners Section
+   =================================== */
+.success-partners__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-2xl);
+    align-items: center;
+    justify-items: center;
+    margin-top: var(--spacing-3xl);
+}
+
+.success-partners__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.success-partners__logo img {
+    width: 180px;
+    height: 100px;
+    object-fit: contain;
+    transition: var(--transition);
+    filter: grayscale(100%) brightness(0) invert(1);
+}
+
+.success-partners__logo:hover img {
+    filter: grayscale(0%) brightness(1) invert(0);
+    transform: scale(1.1);
 }
 
 /* ===================================
@@ -1763,6 +1903,45 @@ img {
         font-size: 1rem;
     }
     
+    .event-image__img {
+        max-height: 800px;
+    }
+    
+    .countries-coverage__content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .countries-coverage__map {
+        order: 2;
+    }
+    
+    .countries-coverage__text {
+        order: 1;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+    
+    .strategic-partners__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .strategic-partners__logo img {
+        width: 120px;
+        height: 70px;
+    }
+    
+    .success-partners__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .success-partners__logo img {
+        width: 120px;
+        height: 70px;
+    }
+    
     .booking__calendly iframe {
         min-height: 600px;
     }
@@ -1790,6 +1969,40 @@ img {
     .stats__grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .curriculum-compatibility__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .strategic-partners__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .strategic-partners__logo img {
+        width: 150px;
+        height: 80px;
+    }
+    
+    .success-partners__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .success-partners__logo img {
+        width: 150px;
+        height: 80px;
+    }
+    
+    .event-image__container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .event-image__img {
+        max-height: 600px;
+        border-radius: var(--radius-lg);
+    }
 }
 
 /* Print Styles */
@@ -1803,6 +2016,10 @@ img {
     
     .booking__calendly iframe {
         min-height: 500px;
+    }
+    
+    .event-image__img {
+        max-height: 600px;
     }
     
     body {

@@ -186,7 +186,7 @@ Edit the CSS variables in `styles.css`:
 :root {
     --color-primary: #1a1f4d;
     --color-cyan: #00d4ff;
-    --color-pink: #ff1654;
+    --color-pink: #ED893D;
     /* ... other colors */
 }
 ```
