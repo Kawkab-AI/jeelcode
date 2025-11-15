@@ -149,28 +149,14 @@
     window.addEventListener('scroll', toggleScrollTopBtn);
     
     if (scrollTopBtn) {
-        scrollTopBtn.addEventListener('click', () => {
-            const start = window.pageYOffset;
-            const duration = 1500; // 1.5 seconds
-            const startTime = performance.now();
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent any default behavior
             
-            function easeInOutCubic(t) {
-                return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-            }
-            
-            function animateScroll(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easing = easeInOutCubic(progress);
-                
-                window.scrollTo(0, start * (1 - easing));
-                
-                if (progress < 1) {
-                    requestAnimationFrame(animateScroll);
-                }
-            }
-            
-            requestAnimationFrame(animateScroll);
+            // Use the browser's built-in smooth scrolling for instant, native performance
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 
