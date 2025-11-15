@@ -152,14 +152,13 @@
         scrollTopBtn.addEventListener('click', () => {
             const start = window.pageYOffset;
             const duration = 1500; // 1.5 seconds
-            let startTime = null;
+            const startTime = performance.now();
             
             function easeInOutCubic(t) {
                 return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
             }
             
             function animateScroll(currentTime) {
-                if (startTime === null) startTime = currentTime;
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
                 const easing = easeInOutCubic(progress);
