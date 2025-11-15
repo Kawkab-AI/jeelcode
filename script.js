@@ -16,6 +16,7 @@
     const navToggle = document.getElementById('navToggle');
     const navClose = document.getElementById('navClose');
     const navLinks = document.querySelectorAll('.nav__link');
+    const scrollTopBtn = document.getElementById('scrollTop');
     const contactForm = document.getElementById('contactForm');
 
     // ===================================
@@ -121,6 +122,47 @@
         }
         scrollTimeout = window.requestAnimationFrame(handleScroll);
     });
+
+    // ===================================
+    // زر العودة للأعلى
+    // ===================================
+    function toggleScrollTopBtn() {
+        if (!scrollTopBtn) return;
+        
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('show');
+        } else {
+            scrollTopBtn.classList.remove('show');
+        }
+    }
+    
+    window.addEventListener('scroll', toggleScrollTopBtn);
+    
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            const start = window.pageYOffset;
+            const duration = 1500; // 1.5 seconds
+            const startTime = performance.now();
+            
+            function easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+            }
+            
+            function animateScroll(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easing = easeInOutCubic(progress);
+                
+                window.scrollTo(0, start * (1 - easing));
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateScroll);
+                }
+            }
+            
+            requestAnimationFrame(animateScroll);
+        });
+    }
 
     // ===================================
     // رابط التنقل النشط
@@ -303,6 +345,9 @@
     document.addEventListener('DOMContentLoaded', () => {
         // تهيئة الرابط النشط
         updateActiveLink();
+        
+        // تهيئة زر العودة للأعلى
+        toggleScrollTopBtn();
         
         // إضافة حركة دخول للبطل
         const hero = document.querySelector('.hero');
