@@ -1,13 +1,19 @@
 // ===================================
-// جيل كود - JavaScript الرئيسي
-// أداء عالي وموقع عربي
+// JeelCode - Main JavaScript
+// 
+// Main JavaScript file for the website
+// Contains all interactions and animations
+// Optimized for high performance
 // ===================================
 
 (function() {
     'use strict';
 
     // ===================================
-    // عناصر DOM
+    // DOM Elements
+    // 
+    // Cache all DOM elements used in the site
+    // for better performance instead of repeated queries
     // ===================================
     const html = document.documentElement;
     const body = document.body;
@@ -17,11 +23,15 @@
     const navClose = document.getElementById('navClose');
     const navLinks = document.querySelectorAll('.nav__link');
     const scrollTopBtn = document.getElementById('scrollTop');
-    const contactForm = document.getElementById('contactForm');
 
     // ===================================
-    // قائمة التنقل (الجوال)
+    // Mobile Navigation Menu
+    // 
+    // Control opening and closing of menu on small screens
+    // Prevents scrolling when menu is open
     // ===================================
+    
+    // Open menu
     function showMenu() {
         if (navMenu) {
             navMenu.classList.add('show');
@@ -142,13 +152,14 @@
         scrollTopBtn.addEventListener('click', () => {
             const start = window.pageYOffset;
             const duration = 1500; // 1.5 seconds
-            const startTime = performance.now();
+            let startTime = null;
             
             function easeInOutCubic(t) {
                 return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
             }
             
             function animateScroll(currentTime) {
+                if (startTime === null) startTime = currentTime;
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
                 const easing = easeInOutCubic(progress);
@@ -214,85 +225,6 @@
     });
 
     // ===================================
-    // معالجة نموذج الاتصال
-    // ===================================
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-            
-            // الحصول على زر الإرسال
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // إظهار حالة التحميل
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'جاري الإرسال...';
-            
-            try {
-                // محاكاة إرسال النموذج (استبدل بمكالمة API الفعلية)
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // رسالة النجاح
-                showNotification('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
-                
-                // إعادة تعيين النموذج
-                contactForm.reset();
-                
-            } catch (error) {
-                // رسالة الخطأ
-                showNotification('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.', 'error');
-            } finally {
-                // إعادة تعيين الزر
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }
-        });
-    }
-
-    // ===================================
-    // نظام الإشعارات
-    // ===================================
-    function showNotification(message, type = 'info') {
-        // إنشاء عنصر الإشعار
-        const notification = document.createElement('div');
-        notification.className = `notification notification--${type}`;
-        notification.textContent = message;
-        
-        // إضافة الأنماط
-        Object.assign(notification.style, {
-            position: 'fixed',
-            top: '100px',
-            left: '20px',
-            padding: '1rem 1.5rem',
-            borderRadius: '12px',
-            backgroundColor: type === 'success' ? '#00d4ff' : '#ff1654',
-            color: '#1a1f4d',
-            fontWeight: '600',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-            zIndex: '9999',
-            animation: 'slideInRTL 0.3s ease',
-            maxWidth: '400px'
-        });
-        
-        // إضافة إلى الصفحة
-        body.appendChild(notification);
-        
-        // الإزالة بعد 5 ثوانٍ
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 5000);
-    }
-
-    // ===================================
     // تحميل الصور الكسول
     // ===================================
     if ('IntersectionObserver' in window) {
@@ -318,13 +250,6 @@
     // مراقبة الأداء
     // ===================================
     window.addEventListener('load', () => {
-        // تسجيل مقاييس الأداء
-        if (window.performance && window.performance.timing) {
-            const timing = window.performance.timing;
-            const loadTime = timing.loadEventEnd - timing.navigationStart;
-            console.log(`وقت تحميل الصفحة: ${loadTime}ms`);
-        }
-        
         // إضافة فئة loaded إلى الصفحة
         body.classList.add('loaded');
     });
@@ -356,37 +281,13 @@
                 hero.style.opacity = '1';
             }, 100);
         }
-        
-        console.log('تم تحميل موقع جيل كود بنجاح! 🚀');
     });
 
     // ===================================
-    // إضافة حركات الإشعارات إلى CSS
+    // إضافة أنماط إضافية إلى CSS
     // ===================================
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes slideInRTL {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-        }
-        
         .nav__link.active::after {
             width: 100%;
         }
@@ -467,26 +368,5 @@
             circle.style.transform = `translateY(${scrolled * speed}px)`;
         });
     });
-
-    // ===================================
-    // تحميل الموارد الحرجة مسبقاً
-    // ===================================
-    function preloadResources() {
-        // تحميل الخطوط مسبقاً
-        const fonts = [
-            'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap',
-            'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap'
-        ];
-        
-        fonts.forEach(font => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'style';
-            link.href = font;
-            document.head.appendChild(link);
-        });
-    }
-    
-    preloadResources();
 
 })();

@@ -1,8 +1,14 @@
 /* ===================================
    ROOT VARIABLES - Design System
+   
+   Contains all global CSS variables:
+   - Colors: Brand colors and gradients
+   - Typography: Fonts and sizes
+   - Spacing: Padding and margins
+   - Effects: Shadows and transitions
    =================================== */
 :root {
-    /* Colors from JeelCode Brand */
+    /* ===== Brand Colors ===== */
     --color-primary: #1a1f4d;
     --color-primary-dark: #0f1333;
     --color-secondary: #1e2a5e;
@@ -18,43 +24,43 @@
     --color-gray: #6c757d;
     --color-dark: #212529;
     
-    /* Gradients */
+    /* ===== Gradients ===== */
     --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     --gradient-cyan: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-cyan-light) 100%);
     --gradient-pink: linear-gradient(135deg, var(--color-pink) 0%, var(--color-pink-light) 100%);
     --gradient-orange: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%);
     
-    /* Typography */
+    /* ===== Typography ===== */
     --font-arabic: 'Tajawal', 'Cairo', sans-serif;
     
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-2xl: 4rem;
-    --spacing-3xl: 6rem;
+    /* ===== Spacing ===== */
+    --spacing-xs: 0.5rem;      /* 8px - Extra small */
+    --spacing-sm: 1rem;        /* 16px - Small */
+    --spacing-md: 1.5rem;      /* 24px - Medium */
+    --spacing-lg: 2rem;        /* 32px - Large */
+    --spacing-xl: 3rem;        /* 48px - Extra large */
+    --spacing-2xl: 4rem;       /* 64px - 2X large */
+    --spacing-3xl: 6rem;       /* 96px - 3X large */
     
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    /* ===== Transitions ===== */
+    --transition-fast: 0.2s ease;   /* Fast transition */
+    --transition-base: 0.3s ease;   /* Base transition */
+    --transition-slow: 0.5s ease;   /* Slow transition */
     
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
-    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.25);
+    /* ===== Shadows ===== */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);      /* Small shadow */
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);    /* Medium shadow */
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);     /* Large shadow */
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.25);   /* Extra large shadow */
     
-    /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-full: 9999px;
+    /* ===== Border Radius ===== */
+    --radius-sm: 8px;          /* Small corners */
+    --radius-md: 12px;         /* Medium corners */
+    --radius-lg: 16px;         /* Large corners */
+    --radius-xl: 24px;         /* Extra large corners */
+    --radius-full: 9999px;     /* Full circle */
     
-    /* Z-index */
+    /* ===== Z-index Layers ===== */
     --z-header: 1000;
     --z-modal: 2000;
     --z-tooltip: 3000;
@@ -198,6 +204,12 @@ img {
 
 /* ===================================
    HEADER & NAVIGATION
+   
+   Contains:
+   - Fixed navigation bar
+   - Mobile dropdown menu
+   - Scroll effects
+   - Active link indicators
    =================================== */
 .header {
     position: fixed;
@@ -277,6 +289,12 @@ img {
 
 /* ===================================
    HERO SECTION
+   
+   First section of the website:
+   - Eye-catching title and description
+   - Call-to-action buttons
+   - Animated background with circles
+   - Parallax effects
    =================================== */
 .hero {
     min-height: 100vh;
@@ -1281,6 +1299,7 @@ img {
     padding: var(--spacing-md);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
+    min-height: 900px;
 }
 
 .booking__calendly iframe {
@@ -1360,14 +1379,13 @@ img {
    CONTACT SECTION
    =================================== */
 .contact__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-2xl);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .contact__info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
 }
 
@@ -1378,19 +1396,25 @@ img {
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     display: flex;
-    gap: var(--spacing-md);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
     transition: all var(--transition-base);
+    min-height: 180px;
+    justify-content: center;
 }
 
 .contact__card:hover {
-    transform: translateX(-10px);
+    transform: translateY(-10px);
     border-color: var(--color-cyan);
+    box-shadow: var(--shadow-xl);
 }
 
 .contact__icon {
-    width: 50px;
-    height: 50px;
-    border-radius: var(--radius-md);
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1398,23 +1422,49 @@ img {
 }
 
 .contact__icon svg {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     color: var(--color-white);
 }
 
+.contact__icon--cyan {
+    background: var(--gradient-cyan);
+}
+
+.contact__icon--pink {
+    background: var(--gradient-pink);
+}
+
+.contact__icon--orange {
+    background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+}
+
+.contact__icon--green {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.contact__icon--blue {
+    background: #0A66C2;
+}
+
 .contact__details {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .contact__title {
     font-size: 1.125rem;
-    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+    margin: 0;
 }
 
 .contact__link {
     color: var(--color-cyan);
     font-weight: 500;
+    word-break: break-word;
+    max-width: 100%;
 }
 
 .contact__link:hover {
@@ -1428,62 +1478,6 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     padding: var(--spacing-xl);
-}
-
-.contact__form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-}
-
-.form__group {
-    position: relative;
-}
-
-.form__input {
-    width: 100%;
-    padding: var(--spacing-md);
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    color: var(--color-white);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all var(--transition-base);
-}
-
-.form__input:focus {
-    outline: none;
-    border-color: var(--color-cyan);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.form__input::placeholder {
-    color: transparent;
-}
-
-.form__label {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    color: rgba(255, 255, 255, 0.6);
-    transition: all var(--transition-base);
-    pointer-events: none;
-}
-
-.form__input:focus ~ .form__label,
-.form__input:not(:placeholder-shown) ~ .form__label {
-    top: -10px;
-    right: var(--spacing-sm);
-    font-size: 0.875rem;
-    color: var(--color-cyan);
-    background: var(--color-primary);
-    padding: 0 var(--spacing-xs);
-}
-
-.form__textarea {
-    resize: vertical;
-    min-height: 120px;
 }
 
 /* ===================================
@@ -1628,7 +1622,6 @@ img {
 .scroll-top:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: var(--shadow-xl);
-    background: var(--gradient-pink);
 }
 
 .scroll-top:active {
@@ -1731,10 +1724,14 @@ img {
 @media screen and (max-width: 968px) {
     .hero__container,
     .about__content,
-    .contact__content,
     .vision__content {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
+    }
+    
+    .contact__info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
     
     .values__wrapper {
@@ -1808,6 +1805,11 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+    .contact__info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
     .nav__menu {
         position: fixed;
         top: 0;
