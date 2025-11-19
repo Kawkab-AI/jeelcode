@@ -177,24 +177,25 @@ img {
 }
 
 .btn-primary {
-    background: var(--gradient-cyan);
+    background: #FFB648;
     color: var(--color-primary);
-    box-shadow: 0 4px 16px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 182, 72, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(255, 182, 72, 0.4);
+    background: #ffaa2e;
 }
 
 .btn-outline {
     background: transparent;
-    border-color: var(--color-cyan);
-    color: var(--color-cyan);
+    border-color: #FFB648;
+    color: #FFB648;
 }
 
 .btn-outline:hover {
-    background: var(--color-cyan);
+    background: #FFB648;
     color: var(--color-primary);
 }
 
@@ -265,21 +266,30 @@ img {
     font-weight: 500;
     position: relative;
     padding: var(--spacing-xs) 0;
+    transition: color var(--transition-base);
+    color: var(--color-white);
 }
 
-.nav__link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-cyan);
-    transition: width var(--transition-base);
+.nav__link.btn-primary {
+    color: var(--color-primary) !important;
 }
 
-.nav__link:hover::after {
-    width: 100%;
+.nav__link.btn-outline {
+    color: #FFB648 !important;
+}
+
+.nav__link.btn-outline:hover {
+    color: var(--color-primary) !important;
+}
+
+.nav__link:hover,
+.nav__link.active {
+    color: #FFB648;
+}
+
+.nav__link.btn-primary:hover,
+.nav__link.btn-primary.active {
+    color: var(--color-primary) !important;
 }
 
 .nav__toggle,
@@ -1148,7 +1158,7 @@ img {
    =================================== */
 .services__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
 }
 
